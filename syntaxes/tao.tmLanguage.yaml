@@ -38,7 +38,7 @@ repository:
     - name: keyword.operator.tao
       match: \b(not|and|or|xor)\b
     - name: keyword.other.tao
-      match: =
+      match: =|\|
   numbers:
     patterns:
     - name: constant.numeric.tao
