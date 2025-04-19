@@ -1,0 +1,40 @@
+{
+  "name": "tao-lang",
+  "displayName": "tao-lang",
+  "description": "Language server for the Tao language",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "npx js-yaml syntaxes/tao.tmLanguage.yaml > syntaxes/tao.tmLanguage.json"
+  },
+  "engines": {
+    "vscode": "^1.99.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "tao",
+        "aliases": [
+          "Tao",
+          "tao"
+        ],
+        "extensions": [
+          ".tao"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "tao",
+        "scopeName": "source.tao",
+        "path": "./syntaxes/tao.tmLanguage.json"
+      }
+    ]
+  },
+  "devDependencies": {
+    "js-yaml": "^4.1.0"
+  }
+}
