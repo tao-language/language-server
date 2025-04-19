@@ -22,6 +22,9 @@
     },
     {
       "include": "#tags"
+    },
+    {
+      "include": "#invalid"
     }
   ],
   "repository": {
@@ -51,7 +54,7 @@
       "patterns": [
         {
           "name": "keyword.control.tao",
-          "match": "\\b(let|mutable|if|match|while|for|break|continue|return|yield)\\b"
+          "match": "\\b(let|mut|if|match|while|for|break|continue|return|yield)\\b"
         },
         {
           "name": "keyword.control.tao",
@@ -75,7 +78,7 @@
         },
         {
           "name": "keyword.other.tao",
-          "match": "="
+          "match": "=|\\||\\(|\\)|\\[|\\]|\\{|\\}|\\."
         }
       ]
     },
@@ -149,6 +152,14 @@
         {
           "name": "variable.language.tao",
           "match": "\\b_\\b"
+        }
+      ]
+    },
+    "invalid": {
+      "patterns": [
+        {
+          "name": "invalid.illegal.tao",
+          "match": "\\S+"
         }
       ]
     }

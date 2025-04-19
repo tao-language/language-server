@@ -10,6 +10,7 @@ patterns:
 - include: '#strings'
 - include: '#names'
 - include: '#tags'
+- include: '#invalid'
 repository:
   comments:
     patterns:
@@ -26,7 +27,7 @@ repository:
   keywords:
     patterns:
     - name: keyword.control.tao
-      match: \b(let|mutable|if|match|while|for|break|continue|return|yield)\b
+      match: \b(let|mut|if|match|while|for|break|continue|return|yield)\b
     - name: keyword.control.tao
       match: ^\s*>
   operators:
@@ -38,7 +39,7 @@ repository:
     - name: keyword.operator.tao
       match: \b(not|and|or|xor)\b
     - name: keyword.other.tao
-      match: =|\|
+      match: =|\||\(|\)|\[|\]|\{|\}|\.
   numbers:
     patterns:
     - name: constant.numeric.tao
@@ -77,4 +78,8 @@ repository:
       match: \b_?[A-Z]\w*\b
     - name: variable.language.tao
       match: \b_\b
+  invalid:
+    patterns:
+    - name: invalid.illegal.tao
+      match: \S+
 scopeName: source.tao
