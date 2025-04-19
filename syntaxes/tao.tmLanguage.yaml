@@ -1,18 +1,80 @@
-"$schema": https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json
+# https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide
+# https://macromates.com/manual/en/language_grammars
+'$schema': https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json
 name: Tao
 patterns:
-- include: "#keywords"
-- include: "#strings"
+- include: '#comments'
+- include: '#keywords'
+- include: '#operators'
+- include: '#numbers'
+- include: '#strings'
+- include: '#names'
+- include: '#tags'
 repository:
+  comments:
+    patterns:
+    - name: comment.block.documentation.tao
+      begin: '/\*\*'
+      end: '\*/'
+    - name: comment.block.tao
+      begin: '/\*'
+      end: '\*/'
+    - name: comment.line.double-slash.tao
+      match: '//.*'
+    - name: comment.line.number-sign.tao
+      match: '#.*'
   keywords:
     patterns:
     - name: keyword.control.tao
-      match: "\\b(if|while|for|return)\\b"
-  strings:
-    name: string.quoted.double.tao
-    begin: "\""
-    end: "\""
+      match: \b(let|mutable|if|match|while|for|break|continue|return|yield)\b
+    - name: keyword.control.tao
+      match: ^\s*>
+  operators:
     patterns:
-    - name: constant.character.escape.tao
-      match: "\\\\."
+    - name: keyword.other.tao
+      match: :|->|=>|~>
+    - name: keyword.operator.tao
+      match: ::|\+|-|\*|/|%|\^|<<|>>|==|!=|<=|<|>=|>|!|~|&&|\|\|
+    - name: keyword.operator.tao
+      match: \b(not|and|or|xor)\b
+    - name: keyword.other.tao
+      match: =
+  numbers:
+    patterns:
+    - name: constant.numeric.tao
+      match: \b(\d+(\.\d+)?([eE]-?\d+)?)\b
+    - name: constant.numeric.tao
+      match: \b(0[bB][01]+)\b
+    - name: constant.numeric.tao
+      match: \b(0[oO][0-7]+)\b
+    - name: constant.numeric.tao
+      match: \b(0[xX]\h+)\b
+  strings:
+    patterns:
+    - name: string.quoted.single.tao
+      begin: "'"
+      end: "'"
+      patterns:
+      - name: constant.character.escape.tao
+        match: \\.
+    - name: string.quoted.double.tao
+      begin: '"'
+      end: '"'
+      patterns:
+      - name: constant.character.escape.tao
+        match: \\.
+    - name: string.quoted.other.tao
+      begin: '`'
+      end: '`'
+      patterns:
+      - name: constant.character.escape.tao
+        match: \\`
+  names:
+    patterns:
+    - name: variable.tao
+      match: \b_?[a-z][\w\-]*\b
+    - name: constant.language.tao
+      match: \b_?[A-Z]\w*\b
+    - name: variable.language.tao
+      match: \b_\b
 scopeName: source.tao
